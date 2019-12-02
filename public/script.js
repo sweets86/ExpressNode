@@ -5,22 +5,15 @@ window.onload = main
 function main() {
     loadTodosFromServer()
     addEventListeners()
-    addTodo()
     /* input() */
     /* setOnClickListeners() */
 }
 
-async function loadTodosFromServer() {
-    const response = await fetch('http://localhost:3000/api/todos')
-    const todos = await response.json()
-    printTodos(todos)
-
-    console.log(todos)
-}
-
 function printTodos(todos) {
+    const ul = document.querySelector("ul")
+
     for (const todo of todos) {
-        printTodo(todo, listTodo)
+        printTodo(todo, ul)
     }
 }
 
@@ -30,24 +23,20 @@ function addEventListeners() {
 }
 
 function addTodo() {
+    const ul = document.querySelector("ul")
     const input = document.querySelector("input")
     const todo = input.value
     input.value = ""
 
-    printTodo(todo, listTodo)
+    printTodo(todo, ul)
     saveTodoToServer(todo)
 }
 
-function printTodo(todo, listTodo) {
-    var listTodo = document.createElement("ul")
-    listTodo.classList = "box"
-
+function printTodo(todo, ul) {
     var list = document.createElement("li")
     list.innerText = todo
     list.classList = "text"
-
-    listTodo.appendChild(list)
-    document.body.appendChild(listTodo)
+    ul.append(list)
 }
 
 async function loadTodosFromServer() {
@@ -56,11 +45,11 @@ async function loadTodosFromServer() {
     printTodo(todos)
 }
 
-async function saveTodoToServer(todo, listTodo) {
+async function saveTodoToServer(todo) {
     const url = 'http://localhost:3000/api/todos'
     const response = await fetch(url, {
         method: 'POST',
-        body: JSON.stringify({ todo: todo }),
+        body: JSON.stringify({ todo: todo }), // ({ todo })
         headers: {
             'Content-Type': 'application/json'
         }

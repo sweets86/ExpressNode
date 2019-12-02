@@ -1,0 +1,23 @@
+{
+  "name": "expressnode",
+  "version": "1.0.0",
+  "description": "FÖRKLARING",
+  "main": "index.js",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "node-dev": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yanica",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sweets86/ExpressNode/issues"
+  },
+  "homepage": "https://github.com/sweets86/ExpressNode#readme"
+}

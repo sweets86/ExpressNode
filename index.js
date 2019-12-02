@@ -7,7 +7,7 @@ const app = express()
 const port = 3000
 const todos = ['vattna blommorna', 'Essa bjuder på lunch']
 
-app.use(bodyParser.json())
+app.use('/api', bodyParser.json())
 
 app.use(express.static('public'))
 app.get('/api/todos', (req, res) => {
@@ -23,4 +23,4 @@ app.post('/api/todos', (req, res) => {
 /* app.get('/', (req, res) => res.send('Hello World'))
 app.get('/contact', (req, res) => res.send('contact..') ) */
 
-app.listen(port, () => console.log(`Server is running - http://localhost:${port}`)) //
+app.listen(port, () => console.log(`Server is running - http://localhost:${port}`)) // ('Server is running at port ' + port))
