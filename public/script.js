@@ -5,8 +5,6 @@ window.onload = main
 function main() {
     loadTodosFromServer()
     addEventListeners()
-    /* input() */
-    /* setOnClickListeners() */
 }
 
 function printTodos(todos) {
@@ -55,23 +53,3 @@ async function saveTodoToServer(todo) {
         }
     })
 }
-
-
-
-/* function input() {
-    var box = document.createElement("div")
-    box.classList = "box"
-
-    var add = document.createElement("input")
-
-    var button = document.createElement("button")
-    button.classList = "button"
-    button.innerText = "Add Todooos"
-    button.onclick = function () {
-
-    }
-
-    box.appendChild(add)
-    box.appendChild(button)
-    document.body.appendChild(box)
-} */
