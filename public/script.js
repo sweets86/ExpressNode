@@ -8,7 +8,7 @@ function main() {
 }
 
 function printTodos(todos) {
-    const ul = document.querySelector("ul")
+    const ul = document.querySelector('ul')
 
     for (const todo of todos) {
         printTodo(todo, ul)
@@ -16,13 +16,13 @@ function printTodos(todos) {
 }
 
 function addEventListeners() {
-    const button = document.querySelector("button")
+    const button = document.querySelector('button')
     button.onclick = addTodo
 }
 
 function addTodo() {
-    const ul = document.querySelector("ul")
-    const input = document.querySelector("input")
+    const ul = document.querySelector('ul')
+    const input = document.querySelector('input')
     const todo = input.value
     input.value = ""
 
@@ -31,16 +31,15 @@ function addTodo() {
 }
 
 function printTodo(todo, ul) {
-    var list = document.createElement("li")
-    list.innerText = todo
-    list.classList = "text"
-    ul.append(list)
+    const li = document.createElement('li')
+    li.innerHTML = todo
+    ul.append(li)
 }
 
 async function loadTodosFromServer() {
     const response = await fetch('http://localhost:3000/api/todos')
     const todos = await response.json()
-    printTodo(todos)
+    printTodos(todos)
 }
 
 async function saveTodoToServer(todo) {
