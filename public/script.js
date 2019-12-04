@@ -5,10 +5,12 @@ window.onload = main
 function main() {
     loadTodosFromServer()
     addEventListeners()
+    
 }
 
 function printTodos(todos) {
     const ul = document.querySelector('ul')
+    ul.innerHTML = ""
 
     for (const todo of todos) {
         printTodo(todo, ul)
@@ -33,7 +35,14 @@ function addTodo() {
 function printTodo(todo, ul) {
     const li = document.createElement('li')
     li.innerHTML = todo
+
+    let button = document.createElement("button")
+    button.innerText = "Ta Bort!"
+    button.data = todo
+    button.onclick = removeTodoToServer
+
     ul.append(li)
+    li.appendChild(button)
 }
 
 async function loadTodosFromServer() {
@@ -51,4 +60,21 @@ async function saveTodoToServer(todo) {
             'Content-Type': 'application/json'
         }
     })
+}
+
+async function removeTodoToServer(event) {
+
+    let todo = event.srcElement.data
+
+    const url = 'http://localhost:3000/api/todos'
+    const response = await fetch(url, {
+        method: 'DELETE',
+        body: JSON.stringify({ todoToRemove: todo }), // ({ todo })
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    console.log(todo)
+
+    await loadTodosFromServer()
 }

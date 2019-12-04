@@ -20,6 +20,23 @@ app.post('/api/todos', (req, res) => {
     res.send()
 })
 
+app.delete('/api/todos', (req, res) => {
+
+    let indexToRemove
+
+    todos.forEach((todo, index) => {
+        if (todo == req.body.todo) {
+            indexTORemove = index
+            return
+        }
+        todos.splice(indexToRemove, 1)
+        res.status(200)
+        res.send()
+    })
+
+
+})
+
 /* app.get('/', (req, res) => res.send('Hello World'))
 app.get('/contact', (req, res) => res.send('contact..') ) */
 
