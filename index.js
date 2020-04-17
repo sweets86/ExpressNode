@@ -4,7 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 
 const app = express()
-const port = 3000
+const port = 5502
 const todos = ['vattna blommorna', 'Essa bjuder på lunch']
 
 app.use('/api', bodyParser.json())

@@ -46,13 +46,13 @@ function printTodo(todo, ul) {
 }
 
 async function loadTodosFromServer() {
-    const response = await fetch('http://localhost:3000/api/todos')
+    const response = await fetch('http://localhost:5502/api/todos')
     const todos = await response.json()
     printTodos(todos)
 }
 
 async function saveTodoToServer(todo) {
-    const url = 'http://localhost:3000/api/todos'
+    const url = 'http://localhost:5502/api/todos'
     const response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify({ todo: todo }), // ({ todo })
@@ -66,7 +66,7 @@ async function removeTodoToServer(event) {
 
     let todo = event.srcElement.data
 
-    const url = 'http://localhost:3000/api/todos'
+    const url = 'http://localhost:5502/api/todos'
     const response = await fetch(url, {
         method: 'DELETE',
         body: JSON.stringify({ todoToRemove: todo }), // ({ todo })
